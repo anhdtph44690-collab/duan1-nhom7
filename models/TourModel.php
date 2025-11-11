@@ -41,10 +41,21 @@ class TourModel
     public function deleteTour($id)
     {
         try {
+            // Xóa tour
             $sql = "DELETE FROM tours WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
-            return $stmt->execute();
+            $result = $stmt->execute();
+            
+            if ($result) {
+                // Giảm ID của tất cả tour có id > $id đi 1 đơn vị
+                $sql = "UPDATE tours SET id = id - 1 WHERE id > :id";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+            }
+            
+            return $result;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;
@@ -55,10 +66,19 @@ class TourModel
     public function createTour($data)
     {
         try {
-            $sql = "INSERT INTO tours (category_id, name, description, price, duration, location, thumbnail, created_at, updated_at) 
-                    VALUES (:category_id, :name, :description, :price, :duration, :location, :thumbnail, NOW(), NOW())";
+            // Lấy ID tiếp theo (MAX(id) + 1)
+            $sql = "SELECT MAX(id) as max_id FROM tours";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            $nextId = ($result['max_id'] ?? 0) + 1;
+            
+            // Insert tour với ID mới
+            $sql = "INSERT INTO tours (id, category_id, name, description, price, duration, location, thumbnail, created_at, updated_at) 
+                    VALUES (:id, :category_id, :name, :description, :price, :duration, :location, :thumbnail, NOW(), NOW())";
             $stmt = $this->conn->prepare($sql);
             
+            $stmt->bindParam(':id', $nextId);
             $stmt->bindParam(':category_id', $data['category_id']);
             $stmt->bindParam(':name', $data['name']);
             $stmt->bindParam(':description', $data['description']);
