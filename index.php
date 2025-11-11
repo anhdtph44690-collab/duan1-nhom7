@@ -7,9 +7,11 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/ProductController.php';
+require_once './controllers/DashboardController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
+require_once './models/TourModel.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -19,6 +21,21 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    '/'=>(new ProductController())->Home(),
-
+    '/' => (new ProductController())->Home(),
+    
+    // Dashboard
+    'dashboard' => (new DashboardController())->Dashboard(),
+    
+    // Xóa tour
+    'delete-tour' => (new DashboardController())->DeleteTour(),
+    
+    // Thêm tour
+    'add-tour' => (new DashboardController())->AddTour(),
+    'submit-add-tour' => (new DashboardController())->SubmitAddTour(),
+    
+    // Sửa tour
+    'edit-tour' => (new DashboardController())->EditTour(),
+    'submit-edit-tour' => (new DashboardController())->SubmitEditTour(),
+    
+    default => (new ProductController())->Home(),
 };
