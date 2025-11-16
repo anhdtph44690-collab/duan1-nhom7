@@ -13,7 +13,7 @@ class DashboardController
     {
         $title = "Dashboard - Quản lý Tour";
         $tours = $this->modelTour->getAllTour();
-        require_once './views/dashboard.php';
+        require_once './views/dashboard/dashboard.php';
     }
 
     public function DeleteTour()
@@ -41,7 +41,7 @@ class DashboardController
     public function AddTour()
     {
         $title = "Thêm Tour Mới";
-        require_once './views/add_tour.php';
+        require_once './views/dashboard/add_tour.php';
     }
 
     public function SubmitAddTour()
@@ -95,7 +95,7 @@ class DashboardController
             
             if ($tour) {
                 $title = "Sửa Tour";
-                require_once './views/edit_tour.php';
+                require_once './views/dashboard/edit_tour.php';
             } else {
                 header('Location: ?act=dashboard&msg=tour_not_found');
                 exit();
