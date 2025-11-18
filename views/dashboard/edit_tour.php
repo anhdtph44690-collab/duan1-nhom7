@@ -5,7 +5,7 @@ require_once './views/dashboard/layout_head.php';
             <div class="container mt-5" style="max-width: 800px;">
         <div class="card mb-4">
             <div class="card-body">
-                <h1 class="card-title">✏️ Sửa Tour</h1>
+                <h1 class="card-title"> Sửa Tour</h1>
                 <p class="card-text">Cập nhật thông tin tour</p>
             </div>
         </div>
@@ -16,12 +16,12 @@ require_once './views/dashboard/layout_head.php';
                 $msg = $_GET['msg'] ?? null;
                 if ($msg === 'required_fields') {
                     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            ⚠️ Vui lòng điền đầy đủ các trường bắt buộc!
+                             Vui lòng điền đầy đủ các trường bắt buộc!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'update_error') {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ❌ Cập nhật tour thất bại! Vui lòng thử lại.
+                             Cập nhật tour thất bại! Vui lòng thử lại.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 }
@@ -68,11 +68,7 @@ require_once './views/dashboard/layout_head.php';
                     <textarea class="form-control" id="description" name="description" rows="4" required placeholder="Mô tả chi tiết về tour..."><?= htmlspecialchars($tour['description']) ?></textarea>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="thumbnail" class="form-label">Ảnh Đại Diện</label>
-                    <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Ví dụ: tour.jpg" value="<?= htmlspecialchars($tour['thumbnail']) ?>">
-                </div>
-                
+            
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-warning btn-lg">💾 Cập Nhật</button>
                     <a href="?act=dashboard" class="btn btn-secondary btn-lg">❌ Hủy</a>

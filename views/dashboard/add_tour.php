@@ -5,7 +5,7 @@ require_once './views/dashboard/layout_head.php';
             <div class="container mt-5" style="max-width: 800px;">
         <div class="card mb-4">
             <div class="card-body">
-                <h1 class="card-title">➕ Thêm Tour Mới</h1>
+                <h1 class="card-title"> Thêm Tour Mới</h1>
                 <p class="card-text">Vui lòng điền đầy đủ thông tin tour</p>
             </div>
         </div>
@@ -16,12 +16,12 @@ require_once './views/dashboard/layout_head.php';
                 $msg = $_GET['msg'] ?? null;
                 if ($msg === 'required_fields') {
                     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            ⚠️ Vui lòng điền đầy đủ các trường bắt buộc!
+                             Vui lòng điền đầy đủ các trường bắt buộc!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'create_error') {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ❌ Tạo tour thất bại! Vui lòng thử lại.
+                             Tạo tour thất bại! Vui lòng thử lại.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 }
@@ -67,8 +67,8 @@ require_once './views/dashboard/layout_head.php';
                 </div>
                 
                 <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-success btn-lg">✅ Tạo Tour</button>
-                    <a href="?act=dashboard" class="btn btn-secondary btn-lg">❌ Hủy</a>
+                    <button type="submit" class="btn btn-success btn-lg"> Tạo Tour</button>
+                    <a href="?act=dashboard" class="btn btn-secondary btn-lg"> Hủy</a>
                 </div>
             </form>
             </div>

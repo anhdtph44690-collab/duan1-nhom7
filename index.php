@@ -8,15 +8,12 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/ProductController.php';
 require_once './controllers/DashboardController.php';
-require_once './controllers/AuthController.php';
+require_once './controllers/BookingController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
 require_once './models/TourModel.php';
-require_once './models/AdminModel.php';
-
-// Require auth helpers
-require_once './commons/auth.php';
+require_once './models/BookingModel.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -39,14 +36,13 @@ match ($act) {
     // Sửa tour
     'edit-tour' => (new DashboardController())->EditTour(),
     'submit-edit-tour' => (new DashboardController())->SubmitEditTour(),
-
-    // Admin auth (từ nhánh main)
-    'admin_register' => (new AuthController())->showRegister(),
-    'admin_register_post' => (new AuthController())->register(),
-    'admin_login' => (new AuthController())->showLogin(),
-    'admin_login_post' => (new AuthController())->login(),
-    'admin_logout' => (new AuthController())->logout(),
-
-    // Default
+    
+    // Booking
+    'booking' => (new BookingController())->Booking(),
+    'submit-booking' => (new BookingController())->SubmitBooking(),
+    'booking-list' => (new BookingController())->BookingList(),
+    'delete-booking' => (new BookingController())->DeleteBooking(),
+    'update-booking' => (new BookingController())->UpdateBookingStatus(),
+    
     default => (new ProductController())->Home(),
 };

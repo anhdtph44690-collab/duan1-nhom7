@@ -67,11 +67,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?act=dashboard">📊 Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?act=booking">🎫 Đặt Tour</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown">
                             👤 Admin
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                            <li><a class="dropdown-item" href="?act=booking-list">📋 Danh Sách Booking</a></li>
                             <li><a class="dropdown-item" href="#">⚙️ Cài Đặt</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">🚪 Đăng Xuất</a></li>
@@ -87,7 +91,11 @@
         <div class="container">
             <h1>🌍 Khám Phá Thế Giới Cùng TourViet</h1>
             <p><?= $thoiTiet ?></p>
-            <a href="?act=dashboard" class="btn btn-light btn-lg">📋 Xem Danh Sách Tour</a>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="?act=dashboard" class="btn btn-light btn-lg">📋 Xem Danh Sách Tour</a>
+                <a href="?act=booking" class="btn btn-warning btn-lg">🎫 Đặt Tour Ngay</a>
+                <a href="?act=booking-list" class="btn btn-info btn-lg">📊 Quản Lý Booking</a>
+            </div>
         </div>
     </section>
 
@@ -100,7 +108,10 @@
                     <div class="card-body">
                         <h5 class="card-title">🏖️ Tour Biển</h5>
                         <p class="card-text">Khám phá những bãi biển đẹp nhất với tour du lịch biển tuyệt vời của chúng tôi.</p>
-                        <a href="?act=dashboard" class="btn btn-primary">Xem Chi Tiết</a>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,7 +120,10 @@
                     <div class="card-body">
                         <h5 class="card-title">⛰️ Tour Núi</h5>
                         <p class="card-text">Trải nghiệm trekking trên các đỉnh núi cao và cảnh đẹp thiên nhiên.</p>
-                        <a href="?act=dashboard" class="btn btn-primary">Xem Chi Tiết</a>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,12 +132,42 @@
                     <div class="card-body">
                         <h5 class="card-title">🌏 Tour Nước Ngoài</h5>
                         <p class="card-text">Du lịch quốc tế đến những đất nước tuyệt đẹp trên thế giới.</p>
-                        <a href="?act=dashboard" class="btn btn-primary">Xem Chi Tiết</a>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Admin Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">⚙️ Quản Lý Hệ Thống</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card border-left border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">📊 Danh Sách Tour</h5>
+                            <p class="card-text">Xem và quản lý toàn bộ các tour du lịch trong hệ thống</p>
+                            <a href="?act=dashboard" class="btn btn-primary">Xem Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card border-left border-info">
+                        <div class="card-body">
+                            <h5 class="card-title">📋 Danh Sách Booking</h5>
+                            <p class="card-text">Quản lý tất cả yêu cầu đặt tour từ khách hàng</p>
+                            <a href="?act=booking-list" class="btn btn-info">Xem Booking</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4 mt-5">
