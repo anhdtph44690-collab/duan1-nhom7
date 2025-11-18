@@ -8,10 +8,12 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/ProductController.php';
 require_once './controllers/DashboardController.php';
+require_once './controllers/BookingController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
 require_once './models/TourModel.php';
+require_once './models/BookingModel.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -36,6 +38,13 @@ match ($act) {
     // Sửa tour
     'edit-tour' => (new DashboardController())->EditTour(),
     'submit-edit-tour' => (new DashboardController())->SubmitEditTour(),
+    
+    // Booking
+    'booking' => (new BookingController())->Booking(),
+    'submit-booking' => (new BookingController())->SubmitBooking(),
+    'booking-list' => (new BookingController())->BookingList(),
+    'delete-booking' => (new BookingController())->DeleteBooking(),
+    'update-booking' => (new BookingController())->UpdateBookingStatus(),
     
     default => (new ProductController())->Home(),
 };

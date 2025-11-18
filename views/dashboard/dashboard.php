@@ -5,14 +5,14 @@ require_once './views/dashboard/layout_head.php';
             <div class="container-fluid">
         <div class="card mb-4">
             <div class="card-body">
-                <h1 class="card-title">📊 Dashboard</h1>
+                <h1 class="card-title"> Dashboard</h1>
                 <p class="card-text">Chào mừng bạn đến với trang quản lý</p>
             </div>
         </div>
         
         <div class="card">
             <div class="card-header">
-                <h2 class="mb-0">📍 Quản Lý Tour</h2>
+                <h2 class="mb-0"> Quản Lý Tour</h2>
             </div>
             <div class="card-body">
             
@@ -20,32 +20,32 @@ require_once './views/dashboard/layout_head.php';
                 $msg = $_GET['msg'] ?? null;
                 if ($msg === 'delete_success') {
                     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                            ✅ Xóa tour thành công!
+                             Xóa tour thành công!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'delete_error') {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ❌ Xóa tour thất bại!
+                             Xóa tour thất bại!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'invalid_id') {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ❌ ID không hợp lệ!
+                             ID không hợp lệ!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'create_success') {
                     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                            ✅ Tạo tour thành công!
+                             Tạo tour thành công!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'update_success') {
                     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                            ✅ Cập nhật tour thành công!
+                             Cập nhật tour thành công!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 } elseif ($msg === 'tour_not_found') {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ❌ Tour không tồn tại!
+                             Tour không tồn tại!
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                           </div>';
                 }
