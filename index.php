@@ -43,6 +43,8 @@ match ($act) {
     'booking-list' => (new BookingController())->BookingList(),
     'delete-booking' => (new BookingController())->DeleteBooking(),
     'update-booking' => (new BookingController())->UpdateBookingStatus(),
+    // Tour detail
+    'tour' => (new ProductController())->TourDetail(),
     
     default => (new ProductController())->Home(),
 };

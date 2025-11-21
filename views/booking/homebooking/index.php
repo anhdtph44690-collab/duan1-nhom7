@@ -5,51 +5,51 @@ require_once './views/dashboard/layout_head.php';
             <div class="container-fluid">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h1 class="card-title">📅 Đặt Tour Du Lịch</h1>
+                        <h1 class="card-title"> Đặt Tour Du Lịch</h1>
                         <p class="card-text">Vui lòng điền thông tin để hoàn tất việc đặt tour</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="mb-0">🎫 Mẫu Đặt Tour</h3>
+                        <h3 class="mb-0"> Mẫu Đặt Tour</h3>
                     </div>
                     <div class="card-body">
                         <?php
                             $msg = $_GET['msg'] ?? null;
                             if ($msg === 'booking_success') {
                                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        ✅ Đặt tour thành công! Chúng tôi sẽ liên hệ với bạn sớm.
+                                         Đặt tour thành công! Chúng tôi sẽ liên hệ với bạn sớm.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'booking_error') {
                                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        ❌ Đặt tour thất bại! Vui lòng thử lại hoặc kiểm tra lại thông tin.
+                                         Đặt tour thất bại! Vui lòng thử lại hoặc kiểm tra lại thông tin.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'required_fields') {
                                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        ⚠️ Vui lòng điền đầy đủ các trường bắt buộc!
+                                         Vui lòng điền đầy đủ các trường bắt buộc!
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'invalid_email') {
                                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        ⚠️ Email không hợp lệ! Vui lòng kiểm tra lại.
+                                         Email không hợp lệ! Vui lòng kiểm tra lại.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'invalid_tour') {
                                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        ⚠️ Tour được chọn không tồn tại! Vui lòng chọn tour khác.
+                                         Tour được chọn không tồn tại! Vui lòng chọn tour khác.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'invalid_date') {
                                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        ⚠️ Ngày khởi hành không hợp lệ! Vui lòng kiểm tra lại.
+                                         Ngày khởi hành không hợp lệ! Vui lòng kiểm tra lại.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'past_date') {
                                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        ⚠️ Ngày khởi hành không thể là ngày quá khứ! Vui lòng chọn ngày trong tương lai.
+                                         Ngày khởi hành không thể là ngày quá khứ! Vui lòng chọn ngày trong tương lai.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             }
@@ -124,7 +124,7 @@ require_once './views/dashboard/layout_head.php';
                 <!-- Tours Info Section -->
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="mb-0">🗺️ Các Tour Đã Được Đặt</h3>
+                        <h3 class="mb-0"> Các Tour Đã Được Đặt</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
