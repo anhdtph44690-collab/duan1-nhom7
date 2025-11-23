@@ -103,30 +103,42 @@
     <div class="container my-5">
         <h2 class="text-center mb-4">🎯 Các Tour Nổi Bật</h2>
         <div class="row">
-            <?php if (!empty($tours) && is_array($tours)): ?>
-                <?php foreach ($tours as $tour): ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <?php if (!empty($tour['thumbnail'])): ?>
-                                <img src="<?= htmlspecialchars($tour['thumbnail']) ?>" class="card-img-top" alt="<?= htmlspecialchars($tour['name']) ?>">
-                            <?php endif; ?>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><?= htmlspecialchars($tour['name']) ?></h5>
-                                <p class="card-text text-truncate"><?= htmlspecialchars($tour['description'] ?? '') ?></p>
-                                <p class="mt-auto mb-2"><strong>Giá:</strong> <span class="badge bg-success"><?= number_format((float)($tour['price'] ?? 0), 0, ',', '.') ?> đ</span></p>
-                                <div class="btn-group w-100" role="group">
-                                    <a href="?act=tour&id=<?= $tour['id'] ?>" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
-                                    <a href="?act=booking&tour_id=<?= $tour['id'] ?>" class="btn btn-success btn-sm">Đặt Tour</a>
-                                </div>
-                            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🏖️ Tour Biển</h5>
+                        <p class="card-text">Khám phá những bãi biển đẹp nhất với tour du lịch biển tuyệt vời của chúng tôi.</p>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="col-12">
-                    <div class="alert alert-info">Hiện chưa có tour nào. Vui lòng quay lại sau!</div>
                 </div>
-            <?php endif; ?>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">⛰️ Tour Núi</h5>
+                        <p class="card-text">Trải nghiệm trekking trên các đỉnh núi cao và cảnh đẹp thiên nhiên.</p>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🌏 Tour Nước Ngoài</h5>
+                        <p class="card-text">Du lịch quốc tế đến những đất nước tuyệt đẹp trên thế giới.</p>
+                        <div class="btn-group w-100" role="group">
+                            <a href="?act=dashboard" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="?act=booking" class="btn btn-success btn-sm">Đặt Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
