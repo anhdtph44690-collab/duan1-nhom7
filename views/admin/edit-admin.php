@@ -1,13 +1,10 @@
-<?php
-// Variables available: $errors (array), $old (array)
-?>
 <!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập Admin</title>
+    <title>Sửa Admin</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%,  #40b56bff 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -30,7 +27,7 @@
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             padding: 40px;
         }
 
@@ -77,8 +74,10 @@
             font-size: 14px;
         }
 
+        input[type="text"],
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="hidden"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -87,6 +86,7 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
+        input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="password"]:focus {
             outline: none;
@@ -94,18 +94,35 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        button {
-            width: 100%;
+        .note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        button,
+        .btn-back {
+            flex: 1;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             border: none;
             border-radius: 6px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
 
         button:hover {
@@ -113,34 +130,20 @@
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
         }
 
-        button:active {
-            transform: translateY(0);
+        .btn-back {
+            background: #e0e0e0;
+            color: #333;
         }
 
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .signup-link a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .signup-link a:hover {
-            color: #667eea;
-            text-decoration: underline;
+        .btn-back:hover {
+            background: #d0d0d0;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Đăng nhập Admin</h1>
+        <h1>Sửa Admin</h1>
 
         <?php if (!empty($errors)): ?>
             <div class="error-box">
@@ -152,19 +155,28 @@
             </div>
         <?php endif; ?>
 
-        <form action="index.php?act=admin_login_post" method="post">
+        <form action="index.php?act=admin_edit_post" method="post">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($admin['id']); ?>">
+
+            <div class="form-group">
+                <label for="name">Tên</label>
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($admin['name']); ?>" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($old['email'] ?? '') ?>" required>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($admin['email']); ?>" required>
             </div>
             <div class="form-group">
-                <label for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Mật khẩu (để trống nếu không đổi)</label>
+                <input type="password" id="password" name="password">
+                <p class="note">Nếu muốn đổi mật khẩu, nhập mật khẩu mới (tối thiểu 6 ký tự)</p>
             </div>
-            <button type="submit">Đăng nhập</button>
-        </form>
 
-        <p class="signup-link">Chưa có tài khoản? <a href="index.php?act=admin_register">Đăng ký ngay</a></p>
+            <div class="button-group">
+                <button type="submit">Cập nhật</button>
+                <a href="index.php?act=admin_list" class="btn-back">Quay lại</a>
+            </div>
+        </form>
     </div>
 </body>
 
