@@ -7,6 +7,7 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/ProductController.php';
+// auth-login
 require_once './controllers/AdminController.php';
 require_once './controllers/GuideController.php';
 
@@ -18,9 +19,19 @@ require_once './models/GuideModel.php';
 // Bắt đầu session để dùng cho authentication
 session_start();
 
+require_once './controllers/DashboardController.php';
+require_once './controllers/BookingController.php';
+
+// Require toàn bộ file Models
+require_once './models/ProductModel.php';
+require_once './models/TourModel.php';
+require_once './models/BookingModel.php';
+ main
+
 // Route
 $act = $_GET['act'] ?? '/';
 
+// auth-login
 
 // Để bảo đảm tính chất chỉ gọi 1 hàm Controller để xử lý request, sử dụng switch cho tương thích
 
@@ -82,3 +93,33 @@ switch ($act) {
         (new ProductController())->Home();
         break;
 }
+
+// Routing - đảm bảo chỉ gọi 1 hàm Controller
+match ($act) {
+    // Trang chủ
+    '/' => (new ProductController())->Home(),
+
+    // Dashboard (từ nhánh t2)
+    'dashboard' => (new DashboardController())->Dashboard(),
+
+    // Xóa tour
+    'delete-tour' => (new DashboardController())->DeleteTour(),
+
+    // Thêm tour
+    'add-tour' => (new DashboardController())->AddTour(),
+    'submit-add-tour' => (new DashboardController())->SubmitAddTour(),
+
+    // Sửa tour
+    'edit-tour' => (new DashboardController())->EditTour(),
+    'submit-edit-tour' => (new DashboardController())->SubmitEditTour(),
+    
+    // Booking
+    'booking' => (new BookingController())->Booking(),
+    'submit-booking' => (new BookingController())->SubmitBooking(),
+    'booking-list' => (new BookingController())->BookingList(),
+    'delete-booking' => (new BookingController())->DeleteBooking(),
+    'update-booking' => (new BookingController())->UpdateBookingStatus(),
+    
+    default => (new ProductController())->Home(),
+};
+ main
