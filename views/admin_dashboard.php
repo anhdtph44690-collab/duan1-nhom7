@@ -180,7 +180,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php?act=/">
-                <i class="bi bi-globe-americas"></i> Tour Du Lịch Admin
+                <i class="bi bi-globe-americas"></i> TourViet
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -280,7 +280,7 @@
 
     <!-- Footer -->
     <footer class="footer-custom">
-        <p class="mb-0">&copy; 2025 Tour Du Lịch Admin. All rights reserved. | <a href="#" style="color: var(--primary-color);">Privacy Policy</a></p>
+        <p class="mb-0">&copy; 2025 TourViet - Du lịch chất lượng. Tất cả quyền được bảo lưu.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
