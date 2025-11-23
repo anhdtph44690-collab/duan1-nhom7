@@ -2,21 +2,14 @@
 // auth-login
 class AdminModel
 {
-    public $conn;
-=======
-
-class AdminModel
-{
     protected $conn;
- main
 
     public function __construct()
     {
         $this->conn = connectDB();
     }
 
-// auth-login
-    public function createAdmin($name, $email, $password_hash)
+    public function createAdmin($name, $email, $password_hash, $role = 'admin')
     {
         $sql = "INSERT INTO admins (name, email, password_hash, role, created_at) VALUES (:name, :email, :password_hash, :role, :created_at)";
         $stmt = $this->conn->prepare($sql);
@@ -25,32 +18,30 @@ class AdminModel
             ':name' => $name,
             ':email' => $email,
             ':password_hash' => $password_hash,
-            ':role' => 'admin',
+            ':role' => $role,
             ':created_at' => $now
         ]);
     }
 
     public function findByEmail($email)
     {
-        $sql = "SELECT * FROM admins WHERE email = :email LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->conn->prepare("SELECT * FROM admins WHERE email = :email LIMIT 1");
         $stmt->execute([':email' => $email]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function findById($id)
     {
-        $sql = "SELECT * FROM admins WHERE id = :id LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->conn->prepare("SELECT * FROM admins WHERE id = :id LIMIT 1");
         $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getAllAdmins()
     {
         $sql = "SELECT id, name, email, role, created_at FROM admins ORDER BY id DESC";
         $stmt = $this->conn->query($sql);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function updateAdmin($id, $name, $email, $role)
@@ -81,23 +72,4 @@ class AdminModel
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([':id' => $id]);
     }
-
-    public function findByEmail($email)
-    {
-        $stmt = $this->conn->prepare("SELECT * FROM admins WHERE email = :email LIMIT 1");
-        $stmt->execute(['email' => $email]);
-        return $stmt->fetch();
-    }
-
-    public function create($data)
-    {
-        $stmt = $this->conn->prepare("INSERT INTO admins (name, email, password, created_at) VALUES (:name, :email, :password, :created_at)");
-        return $stmt->execute([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'created_at' => $data['created_at'] ?? date('Y-m-d H:i:s'),
-        ]);
-    }
- main
 }
