@@ -33,7 +33,7 @@ $act = $_GET['act'] ?? '/';
 
 switch ($act) {
     case '/':
-        (new ProductController())->Home();
+        (new AdminController())->login();
         break;
 
     // Admin: đăng ký, đăng nhập, dashboard, đăng xuất
@@ -48,6 +48,40 @@ switch ($act) {
         break;
     case 'admin_dashboard':
         (new AdminController())->dashboard();
+        break;
+
+    // Tour management
+    case 'dashboard':
+        (new DashboardController())->Dashboard();
+        break;
+    case 'add-tour':
+        (new DashboardController())->AddTour();
+        break;
+    case 'submit-add-tour':
+        (new DashboardController())->SubmitAddTour();
+        break;
+    case 'edit-tour':
+        (new DashboardController())->EditTour();
+        break;
+    case 'submit-edit-tour':
+        (new DashboardController())->SubmitEditTour();
+        break;
+    case 'delete-tour':
+        (new DashboardController())->DeleteTour();
+        break;
+
+    // Booking
+    case 'booking':
+        (new BookingController())->Booking();
+        break;
+    case 'booking-list':
+        (new BookingController())->BookingList();
+        break;
+    case 'update-booking':
+        (new BookingController())->UpdateBookingStatus();
+        break;
+    case 'delete-booking':
+        (new BookingController())->DeleteBooking();
         break;
 
     // Quản lý admin
@@ -85,8 +119,8 @@ switch ($act) {
         break;
 
     default:
-        // nếu không khớp route nào, chuyển về trang chủ
-        (new ProductController())->Home();
+        // nếu không khớp route nào, chuyển về trang đăng nhập
+        (new AdminController())->login();
         break;
 }
 

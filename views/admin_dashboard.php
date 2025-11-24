@@ -112,6 +112,22 @@
             background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
         }
 
+        .menu-item.tour-list {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .menu-item.add-tour {
+            background: linear-gradient(135deg, #ffb347 0%, #ffcc33 100%);
+        }
+
+        .menu-item.manage-tour {
+            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+        }
+
+        .menu-item.booking {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
         .menu-item.logout {
             background: linear-gradient(135deg, #52be80 0%, #1e7e74 100%);
         }
@@ -265,6 +281,22 @@
                 <a href="index.php?act=admin_register" class="menu-item admin-register">
                     <i class="bi bi-person-plus"></i>
                     <span>Tạo Admin mới</span>
+                </a>
+                <a href="index.php?act=dashboard" class="menu-item tour-list">
+                    <i class="bi bi-map"></i>
+                    <span>Danh sách Tour</span>
+                </a>
+                <a href="index.php?act=add-tour" class="menu-item add-tour">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>Thêm Tour Mới</span>
+                </a>
+                <a href="index.php?act=booking-list" class="menu-item manage-tour">
+                    <i class="bi bi-arrow-repeat"></i>
+                    <span>Quản lý Tour</span>
+                </a>
+                <a href="index.php?act=booking" class="menu-item booking">
+                    <i class="bi bi-calendar-check"></i>
+                    <span>Đặt Tour</span>
                 </a>
                 <a href="index.php?act=/" class="menu-item home">
                     <i class="bi bi-house-door"></i>

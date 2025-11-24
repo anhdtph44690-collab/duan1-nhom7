@@ -12,7 +12,7 @@ require_once './views/dashboard/layout_head.php';
         
         <div class="card">
             <div class="card-header">
-                <h2 class="mb-0"> Quản Lý Tour</h2>
+                <h2 class="mb-0"> Danh sách  Tour</h2>
             </div>
             <div class="card-body">
             
