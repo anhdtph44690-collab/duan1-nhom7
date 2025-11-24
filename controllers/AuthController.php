@@ -15,36 +15,32 @@ class AuthController
     {
         $errors = [];
         $old = [];
-        require __DIR__ . '/../views/admin/register.php';
+        require __DIR__ . '/../views/admin_register.php';
     }
 
     public function register()
     {
-        $name = $_POST['name'] ?? '';
-        $email = $_POST['email'] ?? '';
+        $name = trim($_POST['name'] ?? '');
+        $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
+        $password_confirm = $_POST['password_confirm'] ?? '';
 
         $errors = [];
-        $old = ['name' => $name, 'email' => $email];
 
-        if (!$name) $errors[] = 'Tên không được bỏ trống';
+        if ($name === '') $errors[] = 'Tên không được bỏ trống';
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Email không hợp lệ';
         if (strlen($password) < 6) $errors[] = 'Mật khẩu cần ít nhất 6 ký tự';
+        if ($password !== $password_confirm) $errors[] = 'Mật khẩu xác nhận không khớp';
 
         if ($this->model->findByEmail($email)) $errors[] = 'Email đã tồn tại';
 
         if (!empty($errors)) {
-            require __DIR__ . '/../views/admin/register.php';
+            require __DIR__ . '/../views/admin_register.php';
             return;
         }
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $this->model->create([
-            'name' => $name,
-            'email' => $email,
-            'password' => $hash,
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+        $this->model->createAdmin($name, $email, $hash);
 
         header('Location: index.php?act=admin_login');
         exit;
@@ -54,24 +50,23 @@ class AuthController
     {
         $errors = [];
         $old = [];
-        require __DIR__ . '/../views/admin/login.php';
+        require __DIR__ . '/../views/admin_login.php';
     }
 
     public function login()
     {
-        $email = $_POST['email'] ?? '';
+        $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
         $errors = [];
-        $old = ['email' => $email];
 
-        if (!$email || !$password) $errors[] = 'Nhập email và mật khẩu';
+        if ($email === '' || $password === '') $errors[] = 'Nhập email và mật khẩu';
 
         $admin = $this->model->findByEmail($email);
-        if (!$admin || !password_verify($password, $admin['password'])) $errors[] = 'Email hoặc mật khẩu không đúng';
+        if (!$admin || !password_verify($password, $admin['password_hash'])) $errors[] = 'Email hoặc mật khẩu không đúng';
 
         if (!empty($errors)) {
-            require __DIR__ . '/../views/admin/login.php';
+            require __DIR__ . '/../views/admin_login.php';
             return;
         }
 
@@ -82,7 +77,7 @@ class AuthController
             'email' => $admin['email']
         ];
 
-        header('Location: index.php?act=/');
+        header('Location: index.php?act=admin_dashboard');
         exit;
     }
 
