@@ -5,24 +5,38 @@
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
-// Require toàn bộ file Controllers
-require_once './controllers/ProductController.php';
-// auth-login
-require_once './controllers/AdminController.php';
-require_once './controllers/GuideController.php';
+// Require toàn bộ file Controllers (only include if file exists)
+$controllerFiles = [
+    'ProductController.php',
+    'AdminController.php',
+    'GuideController.php',
+    'DashboardController.php',
+    'BookingController.php',
+];
+foreach ($controllerFiles as $cf) {
+    $path = __DIR__ . '/controllers/' . $cf;
+    if (file_exists($path)) {
+        require_once $path;
+    }
+}
 
-// Require toàn bộ file Models
-require_once './models/ProductModel.php';
-require_once './models/AdminModel.php';
-require_once './models/GuideModel.php';
-require_once './models/TourModel.php';
-require_once './models/BookingModel.php';
+// Require toàn bộ file Models (only include if file exists to avoid fatal errors)
+$modelFiles = [
+    'ProductModel.php',
+    'AdminModel.php',
+    'GuideModel.php',
+    'TourModel.php',
+    'BookingModel.php',
+];
+foreach ($modelFiles as $mf) {
+    $path = __DIR__ . '/models/' . $mf;
+    if (file_exists($path)) {
+        require_once $path;
+    }
+}
 
 // Bắt đầu session để dùng cho authentication
 session_start();
-
-require_once './controllers/DashboardController.php';
-require_once './controllers/BookingController.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
