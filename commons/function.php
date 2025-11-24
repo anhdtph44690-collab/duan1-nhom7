@@ -1,5 +1,10 @@
 <?php
 
+// Define PATH_ROOT constant if not already defined
+if (!defined('PATH_ROOT')) {
+    define('PATH_ROOT', __DIR__ . '/../');
+}
+
 // Kết nối CSDL qua PDO
 function connectDB() {
     // Kết nối CSDL
