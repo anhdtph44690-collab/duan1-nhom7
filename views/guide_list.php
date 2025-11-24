@@ -29,9 +29,9 @@
                                     <th>Ngày sinh</th>
                                     <th>Bio</th>
                                     <th>Vai trò</th>
-                                    <th>Trạng thái giới thiệu</th>
+                                    <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
-                                    <th>Action</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
