@@ -5,26 +5,26 @@ require_once './views/dashboard/layout_head.php';
             <div class="container-fluid">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h1 class="card-title">📋 Danh Sách Đặt Tour</h1>
+                        <h1 class="card-title"> Danh Sách Đặt Tour</h1>
                         <p class="card-text">Quản lý các yêu cầu đặt tour từ khách hàng</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="mb-0">🎫 Danh Sách Booking</h3>
+                        <h3 class="mb-0"> Danh Sách Booking</h3>
                     </div>
                     <div class="card-body">
                         <?php
                             $msg = $_GET['msg'] ?? null;
                             if ($msg === 'delete_success') {
                                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        ✅ Xóa booking thành công!
+                                         Xóa booking thành công!
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             } elseif ($msg === 'update_success') {
                                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        ✅ Cập nhật trạng thái thành công!
+                                         Cập nhật trạng thái thành công!
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                                       </div>';
                             }
@@ -63,10 +63,10 @@ require_once './views/dashboard/layout_head.php';
                                                         'completed' => 'success'
                                                     ];
                                                     $statusText = [
-                                                        'pending' => '⏳ Chờ Xác Nhận',
-                                                        'confirmed' => '✅ Đã Xác Nhận',
-                                                        'cancelled' => '❌ Đã Hủy',
-                                                        'completed' => '🎉 Hoàn Thành'
+                                                        'pending' => ' Chờ Xác Nhận',
+                                                        'confirmed' => ' Đã Xác Nhận',
+                                                        'cancelled' => ' Đã Hủy',
+                                                        'completed' => ' Hoàn Thành'
                                                     ];
                                                     $currentStatus = $booking['status'] ?? 'pending';
                                                     $badgeClass = $statusBadge[$currentStatus] ?? 'secondary';
@@ -76,7 +76,7 @@ require_once './views/dashboard/layout_head.php';
                                                 
                                                 <div class="mt-2">
                                                     <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#collapse-<?= $booking['id'] ?>">
-                                                        🔄 Thay Đổi
+                                                         Thay Đổi
                                                     </button>
                                                 </div>
                                                 

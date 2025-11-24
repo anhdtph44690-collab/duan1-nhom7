@@ -4,21 +4,11 @@
 // Khai báo dưới dạng HẰNG SỐ để không phải dùng $GLOBALS
 
 //auth-login
-define('BASE_URL'       , 'http://localhost/duan-tour/');
-
 define('BASE_URL', 'http://localhost/duan-tour/');
- main
 
 define('DB_HOST', 'localhost');
 define('DB_PORT', 3306);
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 //auth-login
-define('DB_NAME'    , 'duan-tour');  // Tên database
-
-main
-
 define('DB_NAME', 'duan-tour');  // Tên database
-
-
-define('PATH_ROOT', __DIR__ . '/../');

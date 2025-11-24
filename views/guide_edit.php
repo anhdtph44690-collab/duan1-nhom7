@@ -57,20 +57,20 @@
                         <textarea name="bio" class="form-control" rows="4"><?php echo htmlspecialchars($_POST['bio'] ?? ($guide['bio'] ?? '')); ?></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Trạng thái giới thiệu</label>
+                        <label class="form-label">Trạng thái</label>
                         <select name="intro_status" class="form-select">
                             <?php $s = $_POST['intro_status'] ?? ($guide['intro_status'] ?? 'pending'); ?>
-                            <option value="pending" <?php echo ($s === 'pending') ? 'selected' : ''; ?>>Pending</option>
-                            <option value="published" <?php echo ($s === 'published') ? 'selected' : ''; ?>>Published</option>
-                            <option value="archived" <?php echo ($s === 'archived') ? 'selected' : ''; ?>>Archived</option>
+                            <option value="pending" <?php echo ($s === 'pending') ? 'selected' : ''; ?>>Đang chờ</option>
+                            <option value="published" <?php echo ($s === 'published') ? 'selected' : ''; ?>>Đã xuất bản</option>
+                            <option value="archived" <?php echo ($s === 'archived') ? 'selected' : ''; ?>>Lưu trữ</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Role</label>
+                        <label class="form-label">Vai trò</label>
                         <select name="role" class="form-select">
                             <?php $r = $_POST['role'] ?? ($guide['role'] ?? 'guide'); ?>
-                            <option value="guide" <?php echo ($r === 'guide') ? 'selected' : ''; ?>>Guide</option>
-                            <option value="senior" <?php echo ($r === 'senior') ? 'selected' : ''; ?>>Senior Guide</option>
+                            <option value="guide" <?php echo ($r === 'guide') ? 'selected' : ''; ?>>Hướng dẫn viên</option>
+                            <option value="senior" <?php echo ($r === 'senior') ? 'selected' : ''; ?>>Hướng dẫn viên cao cấp</option>
                         </select>
                     </div>
                     <div class="mb-3">

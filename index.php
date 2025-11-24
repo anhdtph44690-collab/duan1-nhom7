@@ -15,18 +15,14 @@ require_once './controllers/GuideController.php';
 require_once './models/ProductModel.php';
 require_once './models/AdminModel.php';
 require_once './models/GuideModel.php';
+require_once './models/TourModel.php';
+require_once './models/BookingModel.php';
 
 // Bắt đầu session để dùng cho authentication
 session_start();
 
 require_once './controllers/DashboardController.php';
 require_once './controllers/BookingController.php';
-
-// Require toàn bộ file Models
-require_once './models/ProductModel.php';
-require_once './models/TourModel.php';
-require_once './models/BookingModel.php';
- main
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -37,7 +33,7 @@ $act = $_GET['act'] ?? '/';
 
 switch ($act) {
     case '/':
-        (new ProductController())->Home();
+        (new AdminController())->login();
         break;
 
     // Admin: đăng ký, đăng nhập, dashboard, đăng xuất
@@ -52,6 +48,40 @@ switch ($act) {
         break;
     case 'admin_dashboard':
         (new AdminController())->dashboard();
+        break;
+
+    // Tour management
+    case 'dashboard':
+        (new DashboardController())->Dashboard();
+        break;
+    case 'add-tour':
+        (new DashboardController())->AddTour();
+        break;
+    case 'submit-add-tour':
+        (new DashboardController())->SubmitAddTour();
+        break;
+    case 'edit-tour':
+        (new DashboardController())->EditTour();
+        break;
+    case 'submit-edit-tour':
+        (new DashboardController())->SubmitEditTour();
+        break;
+    case 'delete-tour':
+        (new DashboardController())->DeleteTour();
+        break;
+
+    // Booking
+    case 'booking':
+        (new BookingController())->Booking();
+        break;
+    case 'booking-list':
+        (new BookingController())->BookingList();
+        break;
+    case 'update-booking':
+        (new BookingController())->UpdateBookingStatus();
+        break;
+    case 'delete-booking':
+        (new BookingController())->DeleteBooking();
         break;
 
     // Quản lý admin
@@ -89,37 +119,9 @@ switch ($act) {
         break;
 
     default:
-        // nếu không khớp route nào, chuyển về trang chủ
-        (new ProductController())->Home();
+        // nếu không khớp route nào, chuyển về trang đăng nhập
+        (new AdminController())->login();
         break;
 }
 
-// Routing - đảm bảo chỉ gọi 1 hàm Controller
-match ($act) {
-    // Trang chủ
-    '/' => (new ProductController())->Home(),
-
-    // Dashboard (từ nhánh t2)
-    'dashboard' => (new DashboardController())->Dashboard(),
-
-    // Xóa tour
-    'delete-tour' => (new DashboardController())->DeleteTour(),
-
-    // Thêm tour
-    'add-tour' => (new DashboardController())->AddTour(),
-    'submit-add-tour' => (new DashboardController())->SubmitAddTour(),
-
-    // Sửa tour
-    'edit-tour' => (new DashboardController())->EditTour(),
-    'submit-edit-tour' => (new DashboardController())->SubmitEditTour(),
-    
-    // Booking
-    'booking' => (new BookingController())->Booking(),
-    'submit-booking' => (new BookingController())->SubmitBooking(),
-    'booking-list' => (new BookingController())->BookingList(),
-    'delete-booking' => (new BookingController())->DeleteBooking(),
-    'update-booking' => (new BookingController())->UpdateBookingStatus(),
-    
-    default => (new ProductController())->Home(),
-};
- main
+// Note: routing handled above with the `switch` statement for compatibility
